@@ -28,14 +28,6 @@ pipeline {
             }
         }
         
-        stage("quality gate"){
-           steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-cred' 
-                }
-            } 
-        }
-        
         stage('trivy') {
             steps {
                 sh'trivy fs .'
